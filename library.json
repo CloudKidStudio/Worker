@@ -1,0 +1,12 @@
+{
+	"name": "Worker",
+	"version": "0.0.1",
+	"description": "Execute inline JavaScript with the WebWorker API polyfill",
+	"url": "https://github.com/CloudKidStudio/Worker",
+	"output": "worker",
+	"main": [
+		"src/SubWorker.js",
+		"src/FallbackWorker.js",
+		"src/Worker.js"
+	]
+}

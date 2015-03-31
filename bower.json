@@ -1,0 +1,21 @@
+{
+	"name": "Worker",
+	"version": "0.0.1",
+	"main": "dist/worker.min.js",
+	"devDependencies": {
+		"qunit": "*",
+		"bind-polyfill": "*"
+	},
+	"dependencies": {
+		"cloudkid-namespace": "*"
+	},
+	"ignore": [
+		"Gruntfile.js",
+		"build.json",
+		"tasks",
+		"examples",
+		"docs",
+		"src",
+		"test"
+	]
+}
