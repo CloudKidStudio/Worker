@@ -1,0 +1,245 @@
+{
+    "project": {
+        "name": "Worker",
+        "description": "Execute inline JavaScript with the WebWorker API polyfill",
+        "version": "0.0.1",
+        "url": "https://github.com/CloudKidStudio/Worker"
+    },
+    "files": {
+        "src/FallbackWorker.js": {
+            "name": "src/FallbackWorker.js",
+            "modules": {
+                "Worker": 1
+            },
+            "classes": {
+                "cloudkid.FallbackWorker": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "cloudkid": 1
+            }
+        },
+        "src/SubWorker.js": {
+            "name": "src/SubWorker.js",
+            "modules": {},
+            "classes": {
+                "cloudkid.SubWorker": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "cloudkid": 1
+            }
+        },
+        "src/Worker.js": {
+            "name": "src/Worker.js",
+            "modules": {},
+            "classes": {
+                "cloudkid.Worker": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "cloudkid": 1
+            }
+        }
+    },
+    "modules": {
+        "Worker": {
+            "name": "Worker",
+            "submodules": {},
+            "classes": {
+                "cloudkid.FallbackWorker": 1,
+                "cloudkid.SubWorker": 1,
+                "cloudkid.Worker": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "cloudkid": 1
+            },
+            "tag": "module",
+            "file": "src/Worker.js",
+            "line": 16
+        }
+    },
+    "classes": {
+        "cloudkid.FallbackWorker": {
+            "name": "cloudkid.FallbackWorker",
+            "shortname": "FallbackWorker",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Worker",
+            "namespace": "cloudkid",
+            "file": "src/FallbackWorker.js",
+            "line": 10,
+            "description": "An internal class that duplicates the Worker API as a fallback when WebWorkers are not supported.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "codeString",
+                    "description": "A string to evaluate into worker code.",
+                    "type": "String"
+                }
+            ]
+        },
+        "cloudkid.SubWorker": {
+            "name": "cloudkid.SubWorker",
+            "shortname": "SubWorker",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Worker",
+            "namespace": "cloudkid",
+            "file": "src/SubWorker.js",
+            "line": 7,
+            "description": "Internal class that pretends to be a Web Worker's context.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "codeString",
+                    "description": "A string to evaluate into worker code.",
+                    "type": "String"
+                },
+                {
+                    "name": "parent",
+                    "description": "The FallbackWorker that owns this SubWorker.",
+                    "type": "FallbackWorker"
+                }
+            ]
+        },
+        "cloudkid.Worker": {
+            "name": "cloudkid.Worker",
+            "shortname": "Worker",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Worker",
+            "namespace": "cloudkid",
+            "file": "src/Worker.js",
+            "line": 16,
+            "description": "The Web Workers specification defines an API for spawning background scripts in your web \napplication. Web Workers allow you to do things like fire up long-running scripts to \nhandle computationally intensive tasks, but without blocking the UI or other scripts \nto handle user interactions. Because Workers aren't available on all browsers, we provide\na helpful polyfill for backward compatibility. This worker is designed to run \nasyncronously instead of calling an external file.\n\n\tvar workerCode = \"this.initialVariable = 10;\" +\n\t\"this.onmessage = function(event)\" +\n\t\"{\" +\n\t\t\"var data = event.data;\" +\n\t\t\"var returnVal = this.initialVariable + data.addValue;\" +\n\t\t\"this.postMessage(returnVal);\" +\n\t\"};\";\n\t\n\t// Create the worker\n\tvar worker = cloudkid.Worker.init(workerCode);\n\tworker.onmessage = function(e) {\n\t\t// e.data is the returnVal (30)\n\t};\n\t\n\t// Start the worker.\n\tworker.postMessage({addValue:20});"
+        }
+    },
+    "classitems": [
+        {
+            "file": "src/FallbackWorker.js",
+            "line": 24,
+            "description": "See https://developer.mozilla.org/en-US/docs/Web/API/Worker.postMessage",
+            "itemtype": "method",
+            "name": "postMessage",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "The data to send.",
+                    "type": "*"
+                }
+            ],
+            "class": "cloudkid.FallbackWorker",
+            "module": "Worker",
+            "namespace": "cloudkid"
+        },
+        {
+            "file": "src/FallbackWorker.js",
+            "line": 35,
+            "description": "See https://developer.mozilla.org/en-US/docs/Web/API/Worker.terminate",
+            "itemtype": "method",
+            "name": "terminate",
+            "class": "cloudkid.FallbackWorker",
+            "module": "Worker",
+            "namespace": "cloudkid"
+        },
+        {
+            "file": "src/FallbackWorker.js",
+            "line": 48,
+            "description": "See https://developer.mozilla.org/en-US/docs/Web/API/Worker.onmessage",
+            "itemtype": "property",
+            "name": "onmessage",
+            "type": "Function",
+            "class": "cloudkid.FallbackWorker",
+            "module": "Worker",
+            "namespace": "cloudkid"
+        },
+        {
+            "file": "src/FallbackWorker.js",
+            "line": 54,
+            "description": "The SubWorker that is controlled by this FallbackWorker.",
+            "itemtype": "property",
+            "name": "_wChild",
+            "type": "SubWorker",
+            "access": "private",
+            "tagname": "",
+            "class": "cloudkid.FallbackWorker",
+            "module": "Worker",
+            "namespace": "cloudkid"
+        },
+        {
+            "file": "src/SubWorker.js",
+            "line": 23,
+            "description": "See https://developer.mozilla.org/en-US/docs/Web/API/Worker.onmessage",
+            "itemtype": "property",
+            "name": "onmessage",
+            "type": "Function",
+            "class": "cloudkid.SubWorker",
+            "module": "Worker",
+            "namespace": "cloudkid"
+        },
+        {
+            "file": "src/SubWorker.js",
+            "line": 29,
+            "description": "The FallbackWorker that is controlls by this SubWorker.",
+            "itemtype": "property",
+            "name": "_wParent",
+            "type": "FallbackWorker",
+            "access": "private",
+            "tagname": "",
+            "class": "cloudkid.SubWorker",
+            "module": "Worker",
+            "namespace": "cloudkid"
+        },
+        {
+            "file": "src/SubWorker.js",
+            "line": 36,
+            "description": "See https://developer.mozilla.org/en-US/docs/Web/API/Worker.postMessage",
+            "itemtype": "method",
+            "name": "postMessage",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "The data to send.",
+                    "type": "*"
+                }
+            ],
+            "class": "cloudkid.SubWorker",
+            "module": "Worker",
+            "namespace": "cloudkid"
+        },
+        {
+            "file": "src/Worker.js",
+            "line": 45,
+            "description": "Initialize the worker, this is how you create a Worker or FallbackWorker object.",
+            "itemtype": "method",
+            "name": "init",
+            "static": 1,
+            "params": [
+                {
+                    "name": "codeString",
+                    "description": "The code in string form to make the worker from. As a string, fallback support is easier.",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "Either a Web Worker or a fallback with the same API to use.",
+                "type": "cloudkid.FallbackWorker|window.Worker"
+            },
+            "class": "cloudkid.Worker",
+            "module": "Worker",
+            "namespace": "cloudkid"
+        }
+    ],
+    "warnings": []
+}
