@@ -1,4 +1,4 @@
-# Worker
+# Worker [![Build Status](https://travis-ci.org/CloudKidStudio/Worker.svg)](https://travis-ci.org/CloudKidStudio/Worker) [![Dependency Status](https://david-dm.org/cloudkidstudio/worker.svg)](https://david-dm.org/cloudkidstudio/worker)
 
 Execute inline JavaScript with a Web Worker API polyfill.
 
