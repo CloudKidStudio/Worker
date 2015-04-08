@@ -70,7 +70,7 @@
 	};
 
 	// Reference to prototype
-	p = FallbackWorker.prototype;
+	var p = FallbackWorker.prototype;
 
 	/**
 	*	See https://developer.mozilla.org/en-US/docs/Web/API/Worker.postMessage
