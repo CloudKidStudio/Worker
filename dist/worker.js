@@ -129,11 +129,11 @@
 	var BlobBuilder = window.BlobBuilder || window.WebKitBlobBuilder || window.MozBlobBuilder;
 
 	/**
-	*  The Web Workers specification defines an API for spawning background scripts in your web 
-	*  application. Web Workers allow you to do things like fire up long-running scripts to 
-	*  handle computationally intensive tasks, but without blocking the UI or other scripts 
+	*  The Web Workers specification defines an API for spawning background scripts in your web
+	*  application. Web Workers allow you to do things like fire up long-running scripts to
+	*  handle computationally intensive tasks, but without blocking the UI or other scripts
 	*  to handle user interactions. Because Workers aren't available on all browsers, we provide
-	*  a helpful polyfill for backward compatibility. This worker is designed to run 
+	*  a helpful polyfill for backward compatibility. This worker is designed to run
 	*  asyncronously instead of calling an external file.
 	*
 	*	var workerCode = "this.initialVariable = 10;" +
@@ -149,9 +149,9 @@
 	*	worker.onmessage = function(e) {
 	*		// e.data is the returnVal
 	*	};
-	*	
+	*
 	*	// Start the worker.
-	*	worker.postMessage(); 
+	*	worker.postMessage();
 	*
 	*  @class Worker
 	*/
@@ -196,9 +196,9 @@
 
 		try
 		{
-			// IE 10 and 11, while supporting Blob and Workers, should 
+			// IE 10 and 11, while supporting Blob and Workers, should
 			// throw an error here, so we should catch it and fall back
-			var worker = new Worker(URL.createObjectURL(blob));
+			var worker = new window.Worker(URL.createObjectURL(blob));
 			return worker;
 		}
 		catch(e)
